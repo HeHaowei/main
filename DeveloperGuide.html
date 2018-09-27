@@ -70,7 +70,21 @@
 </li>
 <li><a href="#product-scope">Appendix B: Product Scope</a></li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
+<li><a href="#use-cases">Appendix D: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-incremental-search">D.1. Use case: Incremental Search</a></li>
+<li><a href="#use-case-update">D.2. Use case: Update</a></li>
+<li><a href="#use-case-delete">D.3. Use case: Delete</a></li>
+<li><a href="#use-case-all">D.4. Use case: All</a></li>
+<li><a href="#use-case-find">D.5. Use case: Find</a></li>
+<li><a href="#use-case-check">D.6. Use case: Check</a></li>
+<li><a href="#use-case-list-by-tags">D.7. Use case: List by tags</a></li>
+<li><a href="#use-case-withdraw">D.8. Use case: Withdraw</a></li>
+<li><a href="#use-case-change-status">D.9. Use case: Change Status</a></li>
+<li><a href="#use-case-loan-list">D.10. Use case: Loan List</a></li>
+<li><a href="#use-case-archive">D.11. Use case: Archive</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
 <li><a href="#product-survey">Appendix G: Product Survey</a></li>
@@ -2083,23 +2097,23 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is <code>JalilEnterprises</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-add" class="discrete">Use case: Add</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to add an item</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>JalilEnterprises shows the format to add an item</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User keys in the name and quantity of the item and to use it on which lab session.</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>JalilEnterprises shows the message of successfully added the item</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2112,19 +2126,434 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
+<p>3a. The item already exists</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="use-case-incremental-search"><a class="link" href="#use-case-incremental-search">D.1. Use case: Incremental Search</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>3a. The given index is invalid.</p>
+<p>User types first 3 letters of item</p>
+</li>
+<li>
+<p>JalilEnterprises shows list of items</p>
+</li>
+<li>
+<p>User continues typing</p>
+</li>
+<li>
+<p>JalilEnterprises updates the list with every character keyed</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>2a. No such item</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-update"><a class="link" href="#use-case-update">D.2. Use case: Update</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User types the command with name and at least one of the followings: quantity, minimum quantity, tag</p>
+</li>
+<li>
+<p>JalilEnterprises shows the information is successfully updated</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No such item or missing values</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-delete"><a class="link" href="#use-case-delete">D.3. Use case: Delete</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters name and quantity of item to be deleted</p>
+</li>
+<li>
+<p>JalilEnterprises shows that the information is successfully deleted</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Item to be deleted does not exist</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-all"><a class="link" href="#use-case-all">D.4. Use case: All</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to see all items</p>
+</li>
+<li>
+<p>JalilEnterprises shows every item in the list</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-find"><a class="link" href="#use-case-find">D.5. Use case: Find</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find a specific item by name</p>
+</li>
+<li>
+<p>JalilEnterprises shows the information of the item</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. JalilEnterprises cannot find the item</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message and asks for a new name to search for</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-check"><a class="link" href="#use-case-check">D.6. Use case: Check</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for list of understocked items</p>
+</li>
+<li>
+<p>JalilEnterprises shows list</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. List is empty</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-list-by-tags"><a class="link" href="#use-case-list-by-tags">D.7. Use case: List by tags</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User keys in session name</p>
+</li>
+<li>
+<p>JalilEnterprises lists all materials required for the session</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No such session</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-withdraw"><a class="link" href="#use-case-withdraw">D.8. Use case: Withdraw</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to go back to the previous edition</p>
+</li>
+<li>
+<p>JalilEnterprises requests confirmation</p>
+</li>
+<li>
+<p>User confirms the decision</p>
+</li>
+<li>
+<p>JalilEnterprises finishes going back to the previous edition and shows a message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. JalilEnterprises detects there is no previous edition</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. JalilEnterprises warns the user and shows a message that it is currently in the most original edition</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-change-status"><a class="link" href="#use-case-change-status">D.9. Use case: Change Status</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User keys in name of item</p>
+</li>
+<li>
+<p>JalilEnterprises shows item</p>
+</li>
+<li>
+<p>User keys in command and updated status</p>
+</li>
+<li>
+<p>JalilEnterprises shows updated status of item</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No such item</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. JalilEnterprises shows error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. Invalid status</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. JalilEnterprises shows invalid status message</p>
+<div class="paragraph">
+<p>Use case resumes at step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-loan-list"><a class="link" href="#use-case-loan-list">D.10. Use case: Loan List</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to create loan list</p>
+</li>
+<li>
+<p>JalilEnterprises shows list of items</p>
+</li>
+<li>
+<p>User requests to add specific items into loan list</p>
+</li>
+<li>
+<p>JalilEnterprises shows created loan list</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-archive"><a class="link" href="#use-case-archive">D.11. Use case: Archive</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to archive the status of items</p>
+</li>
+<li>
+<p>JalilEnterprises requests the name of this archive</p>
+</li>
+<li>
+<p>User keys in the name of this archive</p>
+</li>
+<li>
+<p>JalilEnterprises finishes the archive and shows a message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. JalilEnterprises detects the new name conflicts with existing archive&#8217;s names</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. JalilEnterprises warns the user and requests a new name</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
 </div>
 </li>
 </ul>
@@ -2134,6 +2563,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
 </div>
 </div>
 </div>
@@ -2321,4 +2751,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-19 15:52:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-27 04:27:05 UTC</div></div></div></body></html>
